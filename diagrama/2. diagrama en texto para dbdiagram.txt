@@ -1,0 +1,34 @@
+table Cabania {
+  id integer [PK]
+  alquilada boolean
+  capacidad integer
+  descripcion varchar(500)
+  
+}
+
+table Alquiler {
+  id integer [PK]
+  Cabania_id integer
+  Cliente_id integer
+  inicio date
+  final date
+  precio integer
+}
+
+table Cliente {
+  id integer [PK]
+  dni integer
+  cuit integer
+  nombre varchar(100)
+  localidad varchar(100)
+
+}
+
+table Factura {
+  id integer [PK]
+  Alquiler_id integer
+}
+
+Ref: Alquiler.Cabania_id < Cabania.id
+Ref: Alquiler.Cliente_id > Cliente.id
+Ref: Factura.Alquiler_id - Alquiler.id
